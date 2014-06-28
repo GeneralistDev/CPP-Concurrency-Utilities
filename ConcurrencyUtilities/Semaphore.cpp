@@ -8,17 +8,26 @@
 
 #include "Semaphore.h"
 
-/* Default constructor */
+/**
+ *  Default Constructor, which sets the tokens to zero.
+ */
 Semaphore::Semaphore() {
     Semaphore(0);
 }
 
-/* Construct with nTokens starting tokens */
-Semaphore::Semaphore(uint64_t nTokens) {
-    tokens = nTokens;
+/**
+ *  Construct a semaphore with nTokens starting tokens.
+ *  
+ *  @param  n       The number of tokens to initialise the semaphore with.
+ */
+Semaphore::Semaphore(uint64_t n) {
+    tokens = n;
 }
 
-/* Acquire a token. Threads will wait until pulsed if there aren't any available */
+/**
+ *  Acquire a token. If no tokens are available, the thread will 
+ *  block until release is called and the thread is woken up.
+ */
 void Semaphore::Acquire() {
     std::unique_lock<std::mutex> lock{lockObject};
     
@@ -33,19 +42,23 @@ void Semaphore::Acquire() {
     }
 }
 
-/* Release one token */
+/**
+ *  Release a single token.
+ */
 void Semaphore::Release() {
     Release(1);
 }
 
-/* Release nTokens tokens and pulse waiting threads */
-void Semaphore::Release(uint64_t nTokens) {
-    std::unique_lock<std::mutex> locker(lockObject);
+/**
+ *  Release n tokens and pulse a single waiting thread.
+ *
+ *  @param  n   The number of tokens to release.
+ */
+void Semaphore::Release(uint64_t n) {
+    std::unique_lock<std::mutex> lock(lockObject);
     
-    tokens++;
+    tokens += n;
     if (waitingThreads > 0) {
         condvar.notify_one();
     }
 }
-
-
