@@ -161,8 +161,15 @@ a.button span {
 #view-on-github span {
   background: transparent url(../images/octocat-icon.png) 12px 50% no-repeat;
 }
+#latest-release span {
+  background: transparent url(../images/arrow-down-small.png) 12px 50% no-repeat;
+}
 #view-on-github {
   margin-right: 0;
+}
+
+section#release {
+  margin-bottom: 24px;
 }
 
 code, pre {
@@ -336,6 +343,13 @@ footer a:hover {
 .clearfix {display: inline-block;}
 * html .clearfix {height: 1%;}
 .clearfix {display: block;}
+
+#release p {
+	margin-bottom: 0px;
+	padding-top: 12px;
+	float: right;
+	padding-right: 138px;	
+}
 
 /* #Media Queries
 ================================================== */
