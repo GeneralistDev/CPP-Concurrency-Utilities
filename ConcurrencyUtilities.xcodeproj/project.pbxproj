@@ -78,6 +78,7 @@
 				6EA38A64195D30AA00E30859 /* Sources */,
 				6EA38A65195D30AA00E30859 /* Frameworks */,
 				6EA38A66195D30AA00E30859 /* Headers */,
+				6E77808E195E7D9A00086467 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -113,6 +114,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E77808E195E7D9A00086467 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "/usr/local/bin/doxygen ${PROJECT_DIR}/Doxyfile";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6EA38A64195D30AA00E30859 /* Sources */ = {
