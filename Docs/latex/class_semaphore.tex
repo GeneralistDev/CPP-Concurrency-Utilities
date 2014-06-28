@@ -1,0 +1,150 @@
+\hypertarget{class_semaphore}{\section{Semaphore Class Reference}
+\label{class_semaphore}\index{Semaphore@{Semaphore}}
+}
+
+
+{\ttfamily \#include $<$Semaphore.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_semaphore_ae32c955336ae9e60e20a3facde270714}{Semaphore} ()
+\item 
+\hyperlink{class_semaphore_acf6ed02177b6e51402920e5e562e9af1}{Semaphore} (uint64\+\_\+t n\+Tokens)
+\item 
+void \hyperlink{class_semaphore_ad328479493010f05e11b5ac1d2acd8cd}{Acquire} ()
+\item 
+void \hyperlink{class_semaphore_a915f834cca5bbe07c189411a310ee586}{Release} ()
+\item 
+void \hyperlink{class_semaphore_ab5f5466716df85582245482aa76d50a8}{Release} (uint64\+\_\+t n\+Tokens)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \hyperlink{class_semaphore_a1a62705f4517e4142f19e255b48a389f}{lock\+Object}
+\item 
+std\+::condition\+\_\+variable \hyperlink{class_semaphore_ac5d7179cbad5988094c58f139641d9b4}{condvar}
+\item 
+uint64\+\_\+t \hyperlink{class_semaphore_a881a7148dec63cea7a8205b707101f81}{tokens}
+\item 
+uint64\+\_\+t \hyperlink{class_semaphore_a3d0314bc7ca67d2de9d5a4b5acf8fb18}{waiting\+Threads}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_semaphore}{Semaphore} concurrency utility, which can be used to control thread access permission. 
+
+Definition at line 22 of file Semaphore.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_semaphore_ae32c955336ae9e60e20a3facde270714}{\index{Semaphore@{Semaphore}!Semaphore@{Semaphore}}
+\index{Semaphore@{Semaphore}!Semaphore@{Semaphore}}
+\subsubsection[{Semaphore}]{\setlength{\rightskip}{0pt plus 5cm}Semaphore\+::\+Semaphore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_semaphore_ae32c955336ae9e60e20a3facde270714}
+Default Constructor, which sets the tokens to zero. 
+
+Definition at line 14 of file Semaphore.\+cpp.
+
+\hypertarget{class_semaphore_acf6ed02177b6e51402920e5e562e9af1}{\index{Semaphore@{Semaphore}!Semaphore@{Semaphore}}
+\index{Semaphore@{Semaphore}!Semaphore@{Semaphore}}
+\subsubsection[{Semaphore}]{\setlength{\rightskip}{0pt plus 5cm}Semaphore\+::\+Semaphore (
+\begin{DoxyParamCaption}
+\item[{uint64\+\_\+t}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_semaphore_acf6ed02177b6e51402920e5e562e9af1}
+Construct a semaphore with n\+Tokens starting tokens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number of tokens to initialise the semaphore with. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file Semaphore.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_semaphore_ad328479493010f05e11b5ac1d2acd8cd}{\index{Semaphore@{Semaphore}!Acquire@{Acquire}}
+\index{Acquire@{Acquire}!Semaphore@{Semaphore}}
+\subsubsection[{Acquire}]{\setlength{\rightskip}{0pt plus 5cm}void Semaphore\+::\+Acquire (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_semaphore_ad328479493010f05e11b5ac1d2acd8cd}
+Acquire a token. If no tokens are available, the thread will block until release is called and the thread is woken up. 
+
+Definition at line 31 of file Semaphore.\+cpp.
+
+\hypertarget{class_semaphore_a915f834cca5bbe07c189411a310ee586}{\index{Semaphore@{Semaphore}!Release@{Release}}
+\index{Release@{Release}!Semaphore@{Semaphore}}
+\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void Semaphore\+::\+Release (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_semaphore_a915f834cca5bbe07c189411a310ee586}
+Release a single token. 
+
+Definition at line 48 of file Semaphore.\+cpp.
+
+\hypertarget{class_semaphore_ab5f5466716df85582245482aa76d50a8}{\index{Semaphore@{Semaphore}!Release@{Release}}
+\index{Release@{Release}!Semaphore@{Semaphore}}
+\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void Semaphore\+::\+Release (
+\begin{DoxyParamCaption}
+\item[{uint64\+\_\+t}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_semaphore_ab5f5466716df85582245482aa76d50a8}
+Release n tokens and pulse a single waiting thread.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number of tokens to release. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 57 of file Semaphore.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_semaphore_ac5d7179cbad5988094c58f139641d9b4}{\index{Semaphore@{Semaphore}!condvar@{condvar}}
+\index{condvar@{condvar}!Semaphore@{Semaphore}}
+\subsubsection[{condvar}]{\setlength{\rightskip}{0pt plus 5cm}std\+::condition\+\_\+variable Semaphore\+::condvar\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_semaphore_ac5d7179cbad5988094c58f139641d9b4}
+Used to have threads wait, and to pulse threads. 
+
+Definition at line 63 of file Semaphore.\+h.
+
+\hypertarget{class_semaphore_a1a62705f4517e4142f19e255b48a389f}{\index{Semaphore@{Semaphore}!lock\+Object@{lock\+Object}}
+\index{lock\+Object@{lock\+Object}!Semaphore@{Semaphore}}
+\subsubsection[{lock\+Object}]{\setlength{\rightskip}{0pt plus 5cm}std\+::mutex Semaphore\+::lock\+Object\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_semaphore_a1a62705f4517e4142f19e255b48a389f}
+An object to lock for access to class invariants. 
+
+Definition at line 58 of file Semaphore.\+h.
+
+\hypertarget{class_semaphore_a881a7148dec63cea7a8205b707101f81}{\index{Semaphore@{Semaphore}!tokens@{tokens}}
+\index{tokens@{tokens}!Semaphore@{Semaphore}}
+\subsubsection[{tokens}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t Semaphore\+::tokens\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_semaphore_a881a7148dec63cea7a8205b707101f81}
+The tokens in this \hyperlink{class_semaphore}{Semaphore}. 
+
+Definition at line 68 of file Semaphore.\+h.
+
+\hypertarget{class_semaphore_a3d0314bc7ca67d2de9d5a4b5acf8fb18}{\index{Semaphore@{Semaphore}!waiting\+Threads@{waiting\+Threads}}
+\index{waiting\+Threads@{waiting\+Threads}!Semaphore@{Semaphore}}
+\subsubsection[{waiting\+Threads}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t Semaphore\+::waiting\+Threads\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_semaphore_a3d0314bc7ca67d2de9d5a4b5acf8fb18}
+The number of threads that are trying to acquire. 
+
+Definition at line 73 of file Semaphore.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Concurrency\+Utilities/Semaphore.\+h\item 
+Concurrency\+Utilities/Semaphore.\+cpp\end{DoxyCompactItemize}
